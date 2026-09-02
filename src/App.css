@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* Full-bleed background: 100vh is a safe fallback, 100dvh (dynamic
+   viewport height) is what actually prevents a visible strip of the
+   default page background showing at the top/bottom on mobile when
+   the browser's address bar collapses or expands during scroll. */
+.fitrer-root {
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+}
+
+/* Header responsive collapse: below 380px, the theme toggle keeps
+   only its icon so "Categories" + "Templates" + toggle fit in one
+   row without pushing off the right edge of the screen. */
+.theme-toggle-label {
+  display: inline;
+}
+@media (max-width: 380px) {
+  .theme-toggle-label {
+    display: none;
+  }
+}
+
+/* Absolute last line of defense against any element that still
+   manages to overflow: the page itself never scrolls sideways. Real
+   overflow sources should still be fixed at the source (that's what
+   the rest of this pass does) — this only guards against the
+   unexpected, it doesn't replace fixing the actual cause. */
+html, body {
+  overflow-x: hidden;
+}
